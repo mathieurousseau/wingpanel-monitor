@@ -25,6 +25,8 @@ namespace WingpanelMonitor {
         private PopoverWidgetRow uptime;
         private PopoverWidgetRow network_down;
         private PopoverWidgetRow network_up;
+        private PopoverWidgetRow disk_read;
+        private PopoverWidgetRow disk_write;
         private PopoverWidgetRow ram;
         private PopoverWidgetRow swap;
 
@@ -43,6 +45,8 @@ namespace WingpanelMonitor {
             uptime = new PopoverWidgetRow ("Uptime", "0", 4);
             network_down = new PopoverWidgetRow ("Network Down", "0", 4);
             network_up = new PopoverWidgetRow ("Network Up", "0", 4);
+            disk_read = new PopoverWidgetRow ("Disk Read", "0", 4);
+            disk_write = new PopoverWidgetRow ("Disk Write", "0", 4);
             ram = new PopoverWidgetRow ("RAM", "0", 4);
             swap = new PopoverWidgetRow ("Swap", "0", 4);
 
@@ -71,6 +75,8 @@ namespace WingpanelMonitor {
             add (uptime);
             add (network_down);
             add (network_up);
+            add (disk_read);
+            add (disk_write);
             add (new Wingpanel.Widgets.Separator ());
             add (hide_button);
             add (settings_button);
@@ -111,6 +117,11 @@ namespace WingpanelMonitor {
         public void update_network (int upload, int download) {
             network_down.label_value = Utils.format_net_speed (upload, true, false);
             network_up.label_value = Utils.format_net_speed (download, true, false);
+        }
+
+        public void update_disk (int read, int write) {
+            disk_read.label_value = Utils.format_net_speed (read, true, false);
+            disk_write.label_value = Utils.format_net_speed (write, true, false);
         }
     }
 }

@@ -46,5 +46,11 @@ sudo ninja install
 com.github.plugarut.wingpanel-monitor
 ```
 
+To force reload, use `wingpanel -c`
+
+```
+wingpanel -c wingpanel-monitor
+```
+
 ## Special Thanks
  - [Nararyans R.I.](https://github.com/Fatih20) for the icon

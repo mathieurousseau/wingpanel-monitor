@@ -28,6 +28,7 @@ namespace WingpanelMonitor {
         private IndicatorWidget weather_info;
         private IndicatorWidget icon_only;
         private NetworkWidget network_info;
+        private DiskWidget disk_info;
 
         public unowned Settings settings { get; construct set; }
 
@@ -52,7 +53,9 @@ namespace WingpanelMonitor {
 
             network_info = new NetworkWidget ();
 
+            disk_info = new DiskWidget ();
 
+            settings.bind ("show-disk", disk_info, "display", SettingsBindFlags.GET);
             settings.bind ("show-cpu", cpu_info, "display", SettingsBindFlags.GET);
             settings.bind ("show-ram", ram_info, "display", SettingsBindFlags.GET);
             settings.bind ("show-network", network_info, "display", SettingsBindFlags.GET);
@@ -66,6 +69,7 @@ namespace WingpanelMonitor {
             add (cpu_info);
             add (ram_info);
             add (workspace_info);
+            add (disk_info);
         }
 
         public void update_workspace (int val) {
@@ -84,6 +88,12 @@ namespace WingpanelMonitor {
             string up = WingpanelMonitor.Utils.format_net_speed (upload, true, false);
             string down = WingpanelMonitor.Utils.format_net_speed (download, true, false);
             network_info.update_label_data (up, down);
+        }
+
+        public void update_disk (int read, int write) {
+            string read_s = WingpanelMonitor.Utils.format_net_speed (read, true, false);
+            string write_s = WingpanelMonitor.Utils.format_net_speed (write, true, false);
+            disk_info.update_label_data (read_s, write_s);
         }
 
         public void update_weather () {

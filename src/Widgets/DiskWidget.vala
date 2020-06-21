@@ -20,10 +20,10 @@
  */
 
 namespace WingpanelMonitor {
-    public class NetworkWidget : Gtk.Grid {
+    public class DiskWidget : Gtk.Grid {
         private Gtk.Revealer widget_revealer;
-        private Gtk.Label upload_label;
-        private Gtk.Label download_label;
+        private Gtk.Label read_label;
+        private Gtk.Label write_label;
 
         public bool display {
             set { widget_revealer.reveal_child = value; }
@@ -33,23 +33,23 @@ namespace WingpanelMonitor {
         construct {
             orientation = Gtk.Orientation.HORIZONTAL;
 
-            upload_label = new Gtk.Label ("N/A");
-            upload_label.set_width_chars (8);
-            upload_label.halign = Gtk.Align.START;
-            var upload_label_context = upload_label.get_style_context ();
-            upload_label_context.add_class ("small-label");
-            upload_label_context.add_class ("123");
+            read_label = new Gtk.Label ("N/A");
+            read_label.set_width_chars (8);
+            read_label.halign = Gtk.Align.START;
+            var read_label_context = read_label.get_style_context ();
+            read_label_context.add_class ("small-label");
+            read_label_context.add_class ("read");
 
-            download_label = new Gtk.Label ("N/A");
-            download_label.set_width_chars (8);
-            download_label.halign = Gtk.Align.END;
-            var down_label_context = download_label.get_style_context ();
-            down_label_context.add_class ("small-label");
-            down_label_context.add_class ("123");
+            write_label = new Gtk.Label ("N/A");
+            write_label.set_width_chars (8);
+            write_label.halign = Gtk.Align.END;
+            var write_label_context = write_label.get_style_context ();
+            write_label_context.add_class ("small-label");
+            write_label_context.add_class ("write");
 
             var group = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            group.add (upload_label);
-            group.add (download_label);
+            group.add (read_label);
+            group.add (write_label);
 
             widget_revealer = new Gtk.Revealer ();
             widget_revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_RIGHT;
@@ -60,9 +60,9 @@ namespace WingpanelMonitor {
             add (widget_revealer);
         }
 
-        public void update_label_data (string up_speed, string down_speed) {
-            upload_label.label = "↑" + up_speed;
-            download_label.label = "↓" + down_speed;
+        public void update_label_data (string read_speed, string write_speed) {
+            read_label.label = "↑" + read_speed;
+            write_label.label = "↓" + write_speed;
         }
     }
 }

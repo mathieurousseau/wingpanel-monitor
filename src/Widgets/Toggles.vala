@@ -24,6 +24,7 @@ namespace WingpanelMonitor {
         private Wingpanel.Widgets.Switch cpu_switch;
         private Wingpanel.Widgets.Switch ram_switch;
         private Wingpanel.Widgets.Switch network_switch;
+        private Wingpanel.Widgets.Switch disk_switch;
         private Wingpanel.Widgets.Switch workspace_switch;
         private Wingpanel.Widgets.Switch weather_switch;
         private Wingpanel.Widgets.Switch icon_only_switch;
@@ -42,6 +43,7 @@ namespace WingpanelMonitor {
             cpu_switch = new Wingpanel.Widgets.Switch ("CPU usage", settings.get_boolean ("show-cpu"));
             ram_switch = new Wingpanel.Widgets.Switch ("RAM usage", settings.get_boolean ("show-ram"));
             network_switch = new Wingpanel.Widgets.Switch ("Network usage", settings.get_boolean ("show-network"));
+            disk_switch = new Wingpanel.Widgets.Switch ("Disk usage", settings.get_boolean ("show-disk"));
             workspace_switch = new Wingpanel.Widgets.Switch (
                 "Workspace number", settings.get_boolean ("show-workspace")
                 );
@@ -56,6 +58,7 @@ namespace WingpanelMonitor {
             settings.bind ("show-cpu", cpu_switch.get_switch (), "active", SettingsBindFlags.DEFAULT);
             settings.bind ("show-ram", ram_switch.get_switch (), "active", SettingsBindFlags.DEFAULT);
             settings.bind ("show-network", network_switch.get_switch (), "active", SettingsBindFlags.DEFAULT);
+            settings.bind ("show-disk", disk_switch.get_switch (), "active", SettingsBindFlags.DEFAULT);
             settings.bind ("show-workspace", workspace_switch.get_switch (), "active", SettingsBindFlags.DEFAULT);
             settings.bind ("show-weather", weather_switch.get_switch (), "active", SettingsBindFlags.DEFAULT);
             settings.bind ("icon-only", icon_only_switch.get_switch (), "active", SettingsBindFlags.DEFAULT);
@@ -73,6 +76,7 @@ namespace WingpanelMonitor {
             add (cpu_switch);
             add (ram_switch);
             add (network_switch);
+            add (disk_switch);
             add (workspace_switch);
             add (weather_switch);
             add (weather_refresh_spin);

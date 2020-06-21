@@ -5,7 +5,7 @@
       <summary>Display indicator in Wingpanel</summary>
       <description></description>
     </key>
-    <key type="b" name="icon-only">
+        <key type="b" name="icon-only">
       <default>false</default>
       <summary>Show only indicator icon in wingpanel</summary>
       <description></description>
@@ -23,6 +23,11 @@
     <key type="b" name="show-network">
       <default>false</default>
       <summary>Show Network usage in Wingpanel</summary>
+      <description></description>
+    </key>
+    <key type="b" name="show-disk">
+      <default>false</default>
+      <summary>Show Disk usage in Wingpanel</summary>
       <description></description>
     </key>
     <key type="b" name="show-graph">
